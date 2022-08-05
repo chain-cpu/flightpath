@@ -16,15 +16,28 @@ To create a microservice API that can help us understand and track how a particu
 
 [['IND', 'EWR'], ['SFO', 'ATL'], ['GSO', 'IND'], ['ATL', 'GSO']] => ['SFO', 'EWR']
 
-## How to run the microservice
+## How to install && run the microservice
 
 ### From source
-
+If you have already installed rust environment, you can just run it from source code.
 ```terminal
     git clone git@github.com:chainbelief/flightpath.git
-    cargo build --release
+    cd flightpath
+    cargo run
 ```
+### Using docker
+    You can build docker image using Dockerfile and run image on server platform
+    Build docker image
+    ```terminal
+    docker build -t flightpath .
+    ```
+    Run docker image
+    ```terminal
+    docker run -it flightpath
+    ```
 
+    Or you can pull and run it from docker hub.
+    
 ## How to test
 
 ### Using unit tests
