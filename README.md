@@ -15,33 +15,17 @@
 - **URL Params**
 
 - **Data Params**
-  {
-  "tickets": [
-  {
-  "src": "src1",
-  "dst": "dst1",
-  },
-  {
-  "src": "src2",
-  "dst": "dst2",
-  },
-  {
-  "src": "src3",
-  "dst": "dst3",
-  },
-  ...
-  ]
-  }
+  `{ "tickets": [ { "src": "src1", "dst": "dst1", }, { "src": "src2", "dst": "dst2", }, { "src": "src3", "dst": "dst3", }, ... ] }`
 
 - **Success Response:**
 
   - **Code:** 200 <br />
-    **Content:** `{ src : "final_start", dst: "final_end" }`
+    **Content:** `{ "src" : "final_start", "dst": "final_end" }`
 
 - **Error Response:**
 
   - **Code:** 404 Bad Request <br />
-    **Content:** `{ error : "Invalid Path" }`
+    **Content:** `{ "error" : "Invalid Path" }`
 
 - **Sample Call:**
 
