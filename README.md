@@ -29,18 +29,6 @@ cargo run
 You can build docker image using Dockerfile and run image on server platform
 Build docker image
 
-```terminal
-docker build -t flightpath .
-```
-
-Run docker image
-
-```terminal
-docker run -it flightpath
-```
-
-    Or you can pull and run it from docker hub.
-
 ## How to test
 
 ### Using unit tests
