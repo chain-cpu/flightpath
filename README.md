@@ -80,20 +80,20 @@ And run the http request in test.http file
   Content-Type: application/json
 
     {
-    "tickets": [
-    {
-    "src":"ABC",
-    "dst":"DEF"
-    },
-    {
-    "src":"DEF",
-    "dst":"GCD"
-    },
-    {
-    "src":"GCD",
-    "dst":"LCD"
-    }
-    ]
+        "tickets": [
+            {
+            "src":"ABC",
+            "dst":"DEF"
+            },
+            {
+            "src":"DEF",
+            "dst":"GCD"
+            },
+            {
+            "src":"GCD",
+            "dst":"LCD"
+            }
+        ]
     }
 
     Response
