@@ -1,24 +1,34 @@
 #[macro_use]
 extern crate rocket;
-
-use fasthash::metro;
-use rocket::http::uri::Path;
-use rocket::serde::{json::Json, Deserialize, Serialize};
+use rocket::http::Status;
+use rocket::serde::{
+    json::{json, Json, Value},
+    Deserialize, Serialize,
+};
 use std::collections::HashMap;
-use std::error::Error;
 use std::fmt;
 
+#[catch(404)]
+fn not_found() -> Value {
+    json!({
+        "status": "error",
+        "reason": "Resource was not found",
+    })
+}
+
 #[post("/", data = "<ticket_list>")]
-fn get_path(ticket_list: Json<TicketList>) -> String {
+fn get_path(ticket_list: Json<TicketList>) -> Result<Json<Ticket>, Status> {
     match ticket_list.get_path() {
-        Ok(path) => format!("final path is {}", path),
-        Err(err) => format!("Invalid Path Error"),
+        Ok(path) => return Ok(Json(path)),
+        Err(_) => Err(Status::BadRequest),
     }
 }
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/flightpath", routes![get_path])
+    rocket::build()
+        .mount("/flightpath", routes![get_path])
+        .register("/", catchers![not_found])
 }
 
 #[derive(Debug, Clone, FromForm, Serialize, Deserialize)]
@@ -40,6 +50,7 @@ impl TicketList {
         let iter = self.tickets.iter();
         let mut hash_map: HashMap<String, i32> = HashMap::new();
         for ticket in iter {
+            println!("ticket: {}", ticket);
             *hash_map.entry(ticket.src.clone()).or_insert(0) += 1;
             *hash_map.entry(ticket.dst.clone()).or_insert(0) -= 1;
         }
@@ -53,7 +64,7 @@ impl TicketList {
                 }
                 start = key;
             } else if value == -1 {
-                if start != "" {
+                if end != "" {
                     return Err(PathError);
                 }
                 end = key;
@@ -61,10 +72,10 @@ impl TicketList {
                 return Err(PathError);
             }
         }
-        Ok((Ticket {
+        Ok(Ticket {
             src: start,
             dst: end,
-        }))
+        })
     }
 }
 
