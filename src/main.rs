@@ -26,6 +26,7 @@ fn get_path(ticket_list: Json<TicketList>) -> Result<Json<Ticket>, Status> {
 
 #[launch]
 fn rocket() -> _ {
+    println!("FlightPath Microservice launched successfully.");
     rocket::build()
         .mount("/flightpath", routes![get_path])
         .register("/", catchers![not_found])
