@@ -76,30 +76,31 @@ And run the http request in test.http file
 - **Sample Call:**
 
   ```javascript
-  POST http://localhost:8000/flightpath HTTP/1.1
-  Content-Type: application/json
+    POST http://localhost:8000/flightpath HTTP/1.1
+    Content-Type: application/Json;
 
     {
         "tickets": [
             {
-            "src":"ABC",
-            "dst":"DEF"
+                "src":"ABC",
+                "dst":"DEF"
             },
             {
-            "src":"DEF",
-            "dst":"GCD"
+                "src":"DEF",
+                "dst":"GCD"
             },
             {
-            "src":"GCD",
-            "dst":"LCD"
+                "src":"GCD",
+                "dst":"LCD"
             }
         ]
     }
 
     Response
+
     {
-    "src": "ABC",
-    "dst": "LCD"
+        "src": "ABC",
+        "dst": "LCD"
     }
   ```
 
