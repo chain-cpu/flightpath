@@ -21,23 +21,26 @@ To create a microservice API that can help us understand and track how a particu
 ### From source
 If you have already installed rust environment, you can just run it from source code.
 ```terminal
-    git clone git@github.com:chainbelief/flightpath.git
-    cd flightpath
-    cargo run
+git clone git@github.com:chainbelief/flightpath.git
+cd flightpath
+cargo run
 ```
 ### Using docker
-    You can build docker image using Dockerfile and run image on server platform
-    Build docker image
-    ```terminal
-    docker build -t flightpath .
-    ```
-    Run docker image
-    ```terminal
-    docker run -it flightpath
-    ```
+You can build docker image using Dockerfile and run image on server platform
+Build docker image
+
+```terminal
+docker build -t flightpath .
+```
+
+Run docker image
+
+```terminal
+docker run -it flightpath
+```
 
     Or you can pull and run it from docker hub.
-    
+
 ## How to test
 
 ### Using unit tests
